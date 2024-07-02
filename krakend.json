@@ -16,7 +16,16 @@
           "host": [
             "localhost:8081"
           ],
-          "url_pattern": "/"
+          "url_pattern": "/api",
+          "extra_config": {
+            "qos/circuit-breaker": {
+              "interval": 60,
+              "timeout": 60,
+              "max_errors": 2,
+              "name": "version-endpoint",
+              "log_status_change": true
+            }
+          }
         }
       ],
       "extra_config": {
@@ -24,7 +33,7 @@
           "max_rate": 1000,
           "capacity": 100,
           "client_max_rate": 200,
-          "client_capacity": 1,
+          "client_capacity": 100,
           "every": "10m",
           "strategy": "ip"
         }
