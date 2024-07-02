@@ -1,0 +1,34 @@
+{
+  "version": 3,
+  "endpoints": [
+    {
+      "endpoint": "/api",
+      "output_encoding": "no-op",
+      "input_query_strings": [
+        "*"
+      ],
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "encoding": "no-op",
+          "host": [
+            "localhost:8081"
+          ],
+          "url_pattern": "/"
+        }
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "max_rate": 1000,
+          "capacity": 100,
+          "client_max_rate": 200,
+          "client_capacity": 1,
+          "every": "10m",
+          "strategy": "ip"
+        }
+      }
+    }
+  ]
+}
